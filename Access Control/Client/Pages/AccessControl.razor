@@ -1,6 +1,7 @@
 ﻿@page "/accesscontrol"
 
-
+@using Access_Control.Shared
+@using Access_Control.Shared.Services
 @inject NavigationManager NavigationManager
 @inject IJSRuntime jsRuntime
 
@@ -10,210 +11,155 @@
 <AuthorizeView Roles="EXACTSALES\SpotterAdm_Admin">
     <NotAuthorized>Você não está autorizado a acessar esta página.</NotAuthorized>
     <Authorized>
-<style>
-    table {
-        table-layout: fixed;
-        width: 100%;
-    }
+        <style>
 
-        table td {
-            word-wrap: break-word; /* All browsers since IE 5.5+ */
-            overflow-wrap: break-word; /* Renamed property in CSS3 draft spec */
-        }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-    input:checked + .slider {
-        background-color: #2196F3;
-    }
-
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-    .slider.round {
-        border-radius: 34px;
-    }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-</style>
-
-<br />
-    Usuário/Grupo
-<input type="text" id="txtEmailUsuario" @bind="txtUsuario" @onkeyup="@KeyWasPressed" />
-<button class="btn btn-primary" @onclick="Buscar" disabled="@BuscarDisabled">Buscar</button>
-<button class="btn btn-primary" @onclick="Limpar">Limpar busca</button>
-<br />
-<br />
-<table>
-    <thead>
-        <tr>
-            <th width="40px">Id</th>
-            <th width="200px">Nome</th>
-            <th width="200px">Email</th>
-            <th>Sistema</th>
-            <th>Habilitar</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @if (ecList != null && ecList.Any())
-        {
-            foreach (var app in ecList)
-            {
-                <tr>
-                    <td>@app.Id</td>
-                    <td>@app.Nome</td>
-                    <td>@app.Email</td>
-                    <td>@app.Permissao.Nome</td>
-                    <td>
-                        <label class="switch">
-                            <input type="checkbox" checked='@app.Permissao.Permissao' @onchange="Buscar" data-toggle="toggle">
-                            <span class="slider round"></span>
-                        </label>
-                    </td>
-                </tr>
+            .blazored-typeahead {
+                cursor: pointer
             }
-        }
+
+            table {
+                table-layout: fixed;
+                width: 100%;
+            }
+
+                table td {
+                    word-wrap: break-word; /* All browsers since IE 5.5+ */
+                    overflow-wrap: break-word; /* Renamed property in CSS3 draft spec */
+                }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 60px;
+                height: 34px;
+            }
+
+                .switch input {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                }
+
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+                .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: 26px;
+                    width: 26px;
+                    left: 4px;
+                    bottom: 4px;
+                    background-color: white;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+
+            input:checked + .slider {
+                background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+            }
+
+            .slider.round {
+                border-radius: 34px;
+            }
+
+                .slider.round:before {
+                    border-radius: 50%;
+                }
+        </style>
+
+        <br />
+        Usuário/Grupo
+        <input type="text" id="txtEmailUsuario" @bind="txtUsuario" @onkeyup="@KeyWasPressed" />
+        <button class="btn btn-primary" @onclick="Buscar" disabled="@BuscarDisabled">Buscar</button>
+        <button class="btn btn-primary" @onclick="Limpar">Limpar busca</button>
+        <br />
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th width="40px">Id</th>
+                    <th width="200px">Nome</th>
+                    <th width="200px">Email</th>
+                    <th>Sistema</th>
+                    <th>Habilitar</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (ecList != null && ecList.Any())
+                {
+                    foreach (var app in ecList)
+                    {
+                        <tr>
+                            <td>@app.Id</td>
+                            <td>@app.Nome</td>
+                            <td>@app.Email</td>
+                            <td>@app.Permissao.Nome</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" checked='@app.Permissao.Permissao' @onchange="Buscar" data-toggle="toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                    }
+                }
 
 
-    </tbody>
-</table>
-</Authorized>
-    </AuthorizeView>
+            </tbody>
+        </table>
+    </Authorized>
+</AuthorizeView>
 
 
 
 
 @code {
-    List<UserDto> ecList = new List<UserDto>() {
-        new UserDto
-        {
-            Id = 1,
-            Email = "diego@hotmail.com",
-            Nome = "Diego",
-            Permissao = new PermissaoDto
-            {
-                Id = 1,
-                Nome = "Spotter",
-                Permissao = true
-            }
-        },
-                new UserDto
-        {
-            Id = 2,
-            Email = "diego2@hotmail.com",
-            Nome = "Diego2",
-            Permissao = new PermissaoDto
-            {
-                Id = 2,
-                Nome = "Spotter2",
-                Permissao = true
-            }
-        },
-                                new UserDto
-        {
-            Id = 3,
-            Email = "teste@hotmail.com",
-            Nome = "teste",
-            Permissao = new PermissaoDto
-            {
-                Id = 3,
-                Nome = "SpotterApi",
-                Permissao = false
-            }
-        },
-        };
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 151 "C:\Users\dborges\source\repos\Access Control\Access Control\Client\Pages\AccessControl.razor"
+
+    List<Usuario> ecList = new List<Usuario>();
     string txtNomeEmpresa;
     string txtUsuario;
     string txtIdEmpresa;
     bool? empresaAtiva = null;
     bool BuscarDisabled = false;
 
-    class UserDto
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public PermissaoDto Permissao { get; set; }
-    }
-
-    class PermissaoDto
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public bool Permissao { get; set; }
-    }
-
-    public async Task AddTags()
-    {
-
-        try
-        {
-
-            await ShowAlert("Operação realizada com sucesso");
-
-        }
-        catch (Exception ex)
-        {
-            await ShowAlert(ex.Message);
-        }
-
-        base.StateHasChanged();
-    }
-
     public async Task Buscar()
     {
         try
         {
-            ecList = ecList.Where(x => x.Nome == txtUsuario).ToList();
+            UsuarioService artigoServico = new UsuarioService();
+            ecList = await artigoServico.GetUsuarios();
+
         }
         catch (Exception ex)
         {
@@ -225,7 +171,7 @@
 
     public void Limpar()
     {
-        ecList = new List<UserDto>();
+        ecList = new List<Usuario>();
 
         base.StateHasChanged();
     }

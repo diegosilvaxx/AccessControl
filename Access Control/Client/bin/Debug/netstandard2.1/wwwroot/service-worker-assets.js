@@ -5,6 +5,14 @@
       "url": "_content\/Microsoft.AspNetCore.Components.WebAssembly.Authentication\/AuthenticationService.js"
     },
     {
+      "hash": "sha256-J3yBtIuvF38lccTVcUS7ScUgk93ATgKN6kbpbFM9JA0=",
+      "url": "_content\/Blazored.Typeahead\/blazored-typeahead.css"
+    },
+    {
+      "hash": "sha256-ClIzMmBI5Nozgt7KRG3K3u45r2pMtn\/X9Vx2UeudOPU=",
+      "url": "_content\/Blazored.Typeahead\/blazored-typeahead.js"
+    },
+    {
       "hash": "sha256-BHNhq10T\/9aejlrFEhS\/NYeYS3Djwv\/pqg2xUjQCx\/s=",
       "url": "css\/app.css"
     },
@@ -69,7 +77,7 @@
       "url": "manifest.json"
     },
     {
-      "hash": "sha256-H2eeV+jH4hYg3WcwMYbPEGNYGjGDiCqKEtWboYcDuwQ=",
+      "hash": "sha256-Am\/uU7Fdbd\/Vs18CtDtAO+H6muDK4vbSjGh\/sK\/ZDsQ=",
       "url": "_framework\/_bin\/Access_Control.Client.dll"
     },
     {
@@ -221,10 +229,6 @@
       "url": "_framework\/_bin\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-GIwRqw16aKX2IgehfFp+1PwWUXNXFGinRSnckAn60Y0=",
-      "url": "_framework\/_bin\/Access Control.Shared.dll"
-    },
-    {
       "hash": "sha256-4NUQ26HmvXRi8smc0jz9940OUECDLQnoMWQLrMLe0ok=",
       "url": "_framework\/_bin\/Microsoft.AspNetCore.Authorization.dll"
     },
@@ -235,6 +239,10 @@
     {
       "hash": "sha256-LqwA2Rpm96Ualk0IhLZar87kfRCyKHzHTeTt2jYhm7M=",
       "url": "_framework\/_bin\/Microsoft.JSInterop.dll"
+    },
+    {
+      "hash": "sha256-GL5v5sU6iZjMdq+o8eSUj0t24VRXyqjVOkgfaOGWAHc=",
+      "url": "_framework\/_bin\/Access Control.Shared.dll"
     },
     {
       "hash": "sha256-bSgsT2x5xMvs8mara5wU+EJwcyHa9GVMU85HwhWcdWM=",
@@ -301,11 +309,11 @@
       "url": "_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-ZAGbWYWMnhL45jxolSL0wswS+1M+QfKosLzafixMqOA=",
+      "hash": "sha256-3gMQQNgaUuz\/BzWwfr\/ZVKnzv\/Ns8otXWtUHhCBNRiw=",
       "url": "_framework\/_bin\/Access_Control.Client.pdb"
     },
     {
-      "hash": "sha256-77iCcIPszFVznYGmRgAgRGreWtf8MN\/RzwdmbpQPUHk=",
+      "hash": "sha256-azsNKZfmnRiZdlmK2soZ6p0Ckbq2LJr3pVbmItVYzkk=",
       "url": "_framework\/_bin\/Access Control.Shared.pdb"
     },
     {
@@ -325,9 +333,9 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-qE\/ai7zZPugpGjlt2L5oWGSogpyhljBOJ06Uk5BdBpA=",
+      "hash": "sha256-b08ZNDwiy01ww3\/DLlRMZ+iEXVoh+3O\/ICJrEmZk9hw=",
       "url": "_framework\/blazor.boot.json"
     }
   ],
-  "version": "ZsPwadqx"
+  "version": "fNImGZOm"
 };

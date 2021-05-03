@@ -268,3 +268,5 @@ C:\Users\dborges\source\repos\Access Control\Access Control\Server\obj\Debug\net
 C:\Users\dborges\source\repos\Access Control\Access Control\Server\obj\Debug\netcoreapp3.1\Access_Control.Server.dll
 C:\Users\dborges\source\repos\Access Control\Access Control\Server\obj\Debug\netcoreapp3.1\Access_Control.Server.pdb
 C:\Users\dborges\source\repos\Access Control\Access Control\Server\obj\Debug\netcoreapp3.1\Access Control.Server.genruntimeconfig.cache
+C:\Users\dborges\source\repos\Access Control\Access Control\Server\bin\Debug\netcoreapp3.1\Blazored.Typeahead.dll
+C:\Users\dborges\source\repos\Access Control\Access Control\Server\obj\Debug\netcoreapp3.1\Access_Control.Server.MvcApplicationPartsAssemblyInfo.cs
